@@ -1,0 +1,20 @@
+version: '3'
+services:
+  blockchain:
+    build:
+      context: ./blockchain
+      dockerfile: Dockerfile
+    volumes:
+      - ./blockchain:/root/.ethereum
+    ports:
+      - 8545:8545
+      - 8546:8546
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    volumes:
+      - ./frontend/src:/home/app/src
+      - ./frontend/public:/home/app/public
+    ports:
+      - 3000:3000

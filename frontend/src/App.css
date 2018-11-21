@@ -1,0 +1,84 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 20vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /*justify-content: center;*/
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+
+
+input[type=checkbox]{
+  height: 0;
+  width: 0;
+  visibility: hidden;
+}
+
+label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 30rem;
+  height: 15rem;
+  background: grey;
+  display: block;
+  border-radius: 30rem;
+  position: relative;
+}
+
+label:after {
+  content: '';
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  width: 13rem;
+  height: 13rem;
+  background: #fff;
+  border-radius: 18rem;
+  transition: 0.3s;
+}
+
+input:checked + label {
+  background: #bada55;
+}
+
+input:checked + label:after {
+  left: calc(100% - 1rem);
+  transform: translateX(-100%);
+}
+
+label:active:after {
+  width: 130px;
+}
+
+   /*body {*/
+     /*display: flex;*/
+     /*justify-content: center;*/
+     /*align-items: center;*/
+     /*height: 100vh;*/
+   /*}*/
