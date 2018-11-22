@@ -2,7 +2,7 @@ const abi = [
   {
     "constant": true,
     "inputs": [],
-    "name": "superData",
+    "name": "getBool",
     "outputs": [
       {
         "name": "",
@@ -11,6 +11,20 @@ const abi = [
     ],
     "payable": false,
     "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_superData",
+        "type": "bool"
+      }
+    ],
+    "name": "setBool",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {

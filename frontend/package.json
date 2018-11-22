@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "frontend-geth-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -7,6 +7,23 @@
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
     "web3": "^1.0.0-beta.36"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "9.0.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "eslint": "5.7.0",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-react": "^7.6.1",
+    "prettier": "^1.10.2"
   },
   "scripts": {
     "start": "react-scripts start",

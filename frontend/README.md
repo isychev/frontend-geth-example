@@ -1,44 +1,70 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Frontend BlockChain
 
-## Available Scripts
+An example of working with the library geth with Web3js
 
-In the project directory, you can run:
+The application implements a simple data transfer through the blockchain.
+Blockchain is implemented using [geth](https://github.com/ethereum/go-ethereum). The frontend communicates with blockchain with [web3js](https://github.com/ethereum/web3.js).
 
-### `npm start`
+####Installation
+The application supports docker
+```text
+ git clone https://github.com/isychev/frontend-geth-example.git 
+ cd frontend-geth-example
+ docker-compose up
+```
+open localhost:3000
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### Description
 
-### `npm test`
+The blockchain executes a simple smart-contract in which work with one logical value is implemented. 
+```solidity
+pragma solidity ^0.4.22;
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+contract BoolTransfer
+{
+	bool superData;
 
-### `npm run build`
+	constructor() public
+	{
+		superData = true;
+	}
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+	setBool(bool _superData) public
+	{
+		superData = _superData;
+	}
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+	getBool() public view returns(bool)
+	{
+		return superData;
+	}
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
 
-### `npm run eject`
+#### The main file of the blockchain
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**blockchain/BoolTransfer.sol** - smart-contract
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**blockchain/superBool/superBool.json** - geth config file
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+**blockchain/superBool/keystore** - the folder contains files for signing transactions
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**frontend/src/abi.js** - geth abi [more...](https://solidity.readthedocs.io/en/develop/abi-spec.html)
 
-## Learn More
+**frontend/src/byteCode.js** - byte code of smart-contract
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+###№ Work principle
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+When entering the site, a new smart contact is generated
+```js                     
+const web3 = new Web3(new Web3.providers.HttpProvider(GETH_PORT));
+const firstContractInstance = await new web3.eth.Contract(abi);
+```
+ and sent to the blockchain 
+
+```js
+const web3 = new Web3(new Web3.providers.HttpProvider(GETH_PORT));
+const firstContractInstance = await new web3.eth.Contract(abi); 
+```
